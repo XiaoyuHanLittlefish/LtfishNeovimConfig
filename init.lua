@@ -43,5 +43,14 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup({})
+-- 安装插件
+require("lazy").setup({
+	{
+		"RRethy/nvim-base16",
+		lazy=true,
+	},
+})
+
+-- 配置ColorScheme
+vim.cmd.colorscheme("base16-tender")
 
