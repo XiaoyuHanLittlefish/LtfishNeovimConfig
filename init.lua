@@ -47,10 +47,24 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"RRethy/nvim-base16",
-		lazy=true,
+		lazy = true,
+	},
+	{
+		"folke/persistence.nvim",
+		event = "BufReadPre",
+		opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },	
 	},
 })
 
 -- 配置ColorScheme
 vim.cmd.colorscheme("base16-tender")
+
+-- 配置persistence.nvim
+-- restore the session for the current directory
+vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
+-- restore the last session
+vim.api.nvim_set_keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {})
+-- stop Persistence => session won't be saved on exit
+vim.api.nvim_set_keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], {})
+
 
