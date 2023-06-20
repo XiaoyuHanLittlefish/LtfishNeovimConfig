@@ -44,7 +44,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 -- 安装插件
-require("lazy").setup({
+require("lazy").setup(
+{
 	{
 		"RRethy/nvim-base16",
 		lazy = true,
@@ -54,7 +55,18 @@ require("lazy").setup({
 		event = "BufReadPre",
 		opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },	
 	},
-})
+	{
+    		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+		-- or                          , branch = '0.1.1',
+      		dependencies = { 'nvim-lua/plenary.nvim' },
+    	},
+}, 
+{
+    	git = {
+		url_format = "git@github.com:%s"
+	}
+}
+)
 
 -- 配置ColorScheme
 vim.cmd.colorscheme("base16-tender")
