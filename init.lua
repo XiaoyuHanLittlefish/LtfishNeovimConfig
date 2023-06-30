@@ -139,6 +139,11 @@ require("lazy").setup(
 				})
 			end,
 		},
+		{
+			event = "VeryLazy",
+			"tpope/vim-fugitive",
+			cmd = "Git",
+		},
 	},
 	{
 		git = {
