@@ -155,6 +155,10 @@ require("lazy").setup(
 				require('gitsigns').setup()
 			end,
 		},
+		{
+			event = "VeryLazy",
+			"tpope/vim-rhubarb",
+		},
 	},
 	{
 		git = {
